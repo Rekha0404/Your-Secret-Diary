@@ -1,0 +1,204 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body & Background ===== */
+body {
+  font-family: cursive;
+  background: url('background.jpg');
+  background-size: cover;
+  color: #fff;
+}
+
+/* ===== Navbar ===== */
+nav {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  position: fixed;
+  top: 0;
+}
+
+nav .logo {
+  font-size: 30px;
+  color: rgb(92, 25, 140);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: rgb(92, 25, 140);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav ul li a:hover {
+  color: rgb(219, 115, 115);
+}
+
+/* ===== Shared Container ===== */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+/* ===== Cards / Forms ===== */
+.form-box, .content-box {
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+.form-box h2, .content-box h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: rgb(66, 48, 111);
+}
+
+/* ===== Inputs ===== */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: rgb(66, 48, 111);
+}
+
+.form-group input, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid rgb(196, 45, 130);
+  border-radius: 5px;
+}
+
+/* ===== Buttons ===== */
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  background-color: rgb(92, 25, 140);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(219, 115, 115);
+}
+
+/* ===== Text & Links ===== */
+p {
+  text-align: center;
+  margin-top: 15px;
+  color: #000;
+}
+
+p a {
+  text-decoration: none;
+  color: rgb(92, 25, 140);
+}
+
+p a:hover {
+  color: rgb(219, 115, 115);
+}
+
+/* ===== Diary Specific ===== */
+.diary-entry {
+  width: 90%;
+  max-width: 1000px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+.diary-entry textarea {
+  resize: vertical;
+  min-height: 190px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buttons button {
+  width: 48%;
+}
+
+/* ===== Saved Entries ===== */
+.entry-content {
+  display: none;
+  margin-top: 100px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.entry-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.entry-buttons button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.entry-buttons button:hover {
+  background-color: rgb(219, 115, 115);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 20px;
+  }
+  nav .logo {
+    font-size: 24px;
+  }
+  nav ul li a {
+    font-size: 16px;
+  }
+  .form-box, .content-box, .diary-entry {
+    width: 90%;
+  }
+}
