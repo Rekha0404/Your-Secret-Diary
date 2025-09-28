@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Diary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo"><h1>Secret Diary</h1></div>
+    <ul>
+      <li><a href="./home.html">Home</a></li>
+      <li><a href="#" id="logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="diary-entry">
+      <h2>Your Diary</h2>
+      <textarea id="diary-text" placeholder="Write something..."></textarea>
+      <div class="buttons">
+        <button id="save-btn">Save Entry</button>
+        <button onclick="window.location.href='./save.html'">View Entries</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if(!localStorage.getItem('currentUser')){ window.location.href='./login.html'; }
+    document.getElementById('logout').addEventListener('click', ()=>{
+      localStorage.removeItem('currentUser');
+      window.location.href='./login.html';
+    });
+    document.getElementById('save-btn').addEventListener('click', ()=>{
+      const text=document.getElementById('diary-text').value.trim();
+      if(!text){ alert("Write something first!"); return; }
+      let diaryEntries=JSON.parse(localStorage.getItem('diaryEntries')) || [];
+      diaryEntries.push({user:localStorage.getItem('currentUser'), content:text, date:new Date().toLocaleString()});
+      localStorage.setItem('diaryEntries',JSON.stringify(diaryEntries));
+      document.getElementById('diary-text').value='';
+      alert("Saved!");
+    });
+  </script>
+</body>
+</html>
