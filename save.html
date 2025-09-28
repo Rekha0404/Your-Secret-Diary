@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Diaries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo"><h1>Secret Diary</h1></div>
+    <ul>
+      <li><a href="./home.html">Home</a></li>
+      <li><a href="#" id="logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" style="flex-direction: column; align-items: center;">
+    <div class="content-box" style="max-width:1200px; width:100%;">
+      <h2>Saved Diaries</h2>
+      <div id="diary-list"></div>
+    </div>
+  </div>
+
+  <script>
+    if(!localStorage.getItem('currentUser')){ window.location.href='./login.html'; }
+
+    const diaryList=document.getElementById('diary-list');
+    let diaryEntries=JSON.parse(localStorage.getItem('diaryEntries')) || [];
+    const currentUser=localStorage.getItem('currentUser');
+
+    diaryEntries.filter(e=>e.user===currentUser).forEach((entry,index)=>{
+      const div=document.createElement('div');
+      div.className='entry';
+      div.innerHTML=`
+        <h3>Date: ${entry.date}</h3>
+        <div class="entry-content">${entry.content}</div>
+        <div class="entry-buttons">
+          <button class="open-btn">Open</button>
+          <button class="delete-btn" style="background-color:#e74c3c;">Delete</button>
+        </div>
+      `;
+
+      const openBtn = div.querySelector('.open-btn');
+      const contentDiv = div.querySelector('.entry-content');
+      openBtn.addEventListener('click', ()=>{
+        if(contentDiv.style.display==='none'){
+          contentDiv.style.display='block';
+          openBtn.textContent='Close';
+        } else {
+          contentDiv.style.display='none';
+          openBtn.textContent='Open';
+        }
+      });
+
+      div.querySelector('.delete-btn').addEventListener('click', ()=>{
+        diaryEntries = diaryEntries.filter((_,i)=>i!==index);
+        localStorage.setItem('diaryEntries',JSON.stringify(diaryEntries));
+        div.remove();
+      });
+
+      diaryList.appendChild(div);
+    });
+
+    document.getElementById('logout').addEventListener('click', ()=>{
+      localStorage.removeItem('currentUser');
+      window.location.href='./login.html';
+    });
+  </script>
+</body>
+</html>
