@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom';
+export default function EntryCard({ entry }) { return <Link className="entry" to={`/entries/${entry.id}`}><i className="tape"></i><small>{entry.date}</small><div><span>{entry.mood||'♡'}</span><b>↗</b></div><h3>{entry.title||'A little day'}</h3><p>{(entry.content||'A quiet little memory...').slice(0,100)}{entry.content?.length>100?'...':''}</p><footer>kept safely in your diary <b>♡</b></footer></Link>; }

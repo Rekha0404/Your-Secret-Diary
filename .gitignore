@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# Environment variables
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+
+# Local database - keep personal data private
+server/data/diary_db.json
+
+# Dependencies and build files
+node_modules/
+server/node_modules/
+dist/
+
+# Old unused source code
+src-old/
